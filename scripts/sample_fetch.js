@@ -16,13 +16,35 @@
     document.getElementById(`${post.id}`).addEventListener("click" , () => {
       if(document.getElementById(`${post.id}`).checked)
       {
-        /*strikeout the post*/
-        document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: line-through;");
+        fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          completed: true
+          }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+          }
+        })
+        .then(response => {
+          /*strikeout the post*/
+          document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: line-through;");
+        })
       }
       else
       {
-        /*remove strikeout from the post*/
-        document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: none;");
+        fetch(`https://jsonplaceholder.typicode.com/todos/${post.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          completed: false
+          }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+          }
+        })
+        .then(response => {
+          /*remove strikeout from the post*/
+          document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: none;");
+        })
       }
     });
   });
