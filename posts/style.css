@@ -1,0 +1,18 @@
+* {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 15px 30px;
+}
+
+body {
+  padding-left: 1%;
+}
+
+.comment-list {
+  padding: 3%;
+}
+
+.comment-unit {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}

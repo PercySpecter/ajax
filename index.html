@@ -3,11 +3,32 @@
    <head>
       <meta charset="utf-8">
       <link rel="stylesheet" href="stylesheets/normalize.css">
+      <link rel="stylesheet" href="stylesheets/flex-grid.css">
       <title>Sample Fetch</title>
    </head>
    <body>
-     <div id="posts">
-
+     <div class="container">
+       <div class="row">
+         <div class="col col-lg-6">
+           <form name="todo-form">
+             <p>
+               UserID: <input type="text" id="uid" name="uid" data-json="userId">
+             </p>
+             <p>
+               Title: <input type="text" id="title" name="title" data-json="title">
+             </p>
+             <p>
+             <p>
+               <input type="button" id="add-todo" value="Add Todo">
+             </p>
+           </form>
+         </div>
+         <div class="col col-lg-6">
+           <div id="posts">
+             Hello
+           </div>
+         </div>
+       </div>
      </div>
    </body>
    <script src="scripts/sample_fetch.js">
