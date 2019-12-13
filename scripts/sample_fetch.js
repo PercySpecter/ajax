@@ -25,7 +25,7 @@
           "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(response => {
+        .then(() => {
           /*strikeout the post*/
           document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: line-through;");
         })
@@ -41,7 +41,7 @@
           "Content-type": "application/json; charset=UTF-8"
           }
         })
-        .then(response => {
+        .then(() => {
           /*remove strikeout from the post*/
           document.getElementById(`title_${post.id}`).setAttribute("style" , "text-decoration: none;");
         })
