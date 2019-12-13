@@ -1,6 +1,6 @@
 (async function(){
   /*fetching posts by GET requests*/
-  let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  let response = await fetch('https://jsonplaceholder.typicode.com/todos');
   let posts = await response.json();
   console.log(posts);
 
