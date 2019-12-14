@@ -1,0 +1,12 @@
+* {
+  border-radius: 15px 30px;
+}
+
+.total-container {
+  background-color: #eee;
+}
+
+.todo-header {
+  background-color: #eee;
+  border-radius: 15px;
+}

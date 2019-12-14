@@ -5,3 +5,7 @@
 .total-container {
   background-color: #eee;
 }
+
+.post-container {
+  border-radius: 5px;
+}
