@@ -50,31 +50,35 @@
     document.querySelectorAll('.input-check').forEach((element) => {
       const id = element.getAttribute('data-todo');
       element.addEventListener('change', e => toggleTodo(e, id));
-    })
+    });
   }
 
-  function toggleTodo(e, id)  {
+  async function toggleTodo(e, id)  {
     document.getElementById(`label_${id}`).setAttribute("style" , `background-color: #f6ff4d !important`);
-    fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        completed: e.target.checked
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    })
-    .then(response => response.json())
-    .then(todo => {
+    try {
+        response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          completed: e.target.checked
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+      let todo = await response.json();
       console.log(todo);
       todos[todo.id-1].completed = todo.completed;
       const decoration = todo.completed ? '#abffbe' : '#fff';
       document.getElementById(`label_${todo.id}`).setAttribute("style" , `background-color: ${decoration} !important`);
-    })
+    }
+    catch (e) {
+      document.getElementById(`label_${id}`).setAttribute("style" , `background-color: #ffa4a4 !important`);
+    }
   }
 })();
 
 function clearForms() {
-  document.getElementsByTagName("input").value = "";
-  console.log("cleared");
+  document.querySelectorAll('.form-input').forEach((element) => {
+    element.value = "";
+  })
 }
