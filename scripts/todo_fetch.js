@@ -1,11 +1,22 @@
 (async function(){
-  const token = localStorage.getItem('token');
-  if(token == null)
+
+  if(isLoggedIn())
   {
-    console.log(token);
-    document.getElementById("todos").innerHTML = `<span class="mx-auto"> Please Login to view your Todos </span>`;
+    handleLogin();
+    // location.reload();
+  }
+
+  else
+  {
+    document.getElementById('add-todo-form').innerHTML = '';
+    document.getElementById("todos").innerHTML = `<span class="mx-auto">
+                                                    Please <a href='../'>Login</a> to view your Todos 
+                                                  </span>`;
     return;
   }
+
+  const token = localStorage.getItem('token');
+
   /*fetching todos by GET requests*/
   let response = await fetch('http://localhost:3000/todos' , {
     headers: {
@@ -26,7 +37,7 @@
                       "title": "",
                       "completed": false
                     };
-    new_todo.userId = +document.forms['todo-form']['uid'].value;
+    new_todo.userId = localStorage.getItem('uid');
     // new_todo.id = todos[todos.length-1].id + 1;
     new_todo.title = document.forms['todo-form']['title'].value;
 
@@ -38,7 +49,7 @@
       body: JSON.stringify(new_todo),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        // "Authorization": `jwt ${token}`
+        "Authorization": `jwt ${token}`
       }
     });
 
@@ -93,10 +104,26 @@
       document.getElementById(`label_${id}`).setAttribute("style" , `background-color: #ffa4a4 !important`);
     }
   }
+
+  function isLoggedIn() {
+    console.log(localStorage.getItem('token') !== null);
+    return (localStorage.getItem('token') !== null);
+  }
+
+  function handleLogin() {
+    document.getElementById('logout-button').innerHTML =
+    `<button class="btn btn-outline-warning mr-2" id="add-todo" type="button" onclick="logout()">Logout</button>`;
+  }
 })();
 
 function clearForms() {
   document.querySelectorAll('.form-input').forEach((element) => {
     element.value = "";
   })
+}
+
+function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('uid');
+  location.reload();
 }

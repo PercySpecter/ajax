@@ -1,3 +1,0 @@
-(() => {
-  localStorage.removeItem('token');
-})();
