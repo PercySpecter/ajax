@@ -29,6 +29,26 @@
         console.log("wronggg");
       }
     });
+
+    document.getElementById('signup-form').addEventListener("submit" , async (e) => {
+      e.preventDefault();
+      const userId = +document.forms['signup-form']['uid'].value;
+      let url = `http://localhost:3000/new/${userId}/${document.forms['signup-form']['pass'].value}`;
+      console.log(url);
+      try {
+        let response = await fetch(url);
+        let msg = await response.json();
+        document.getElementById('status-msg').innerHTML = msg.msg;
+        document.querySelectorAll('input').forEach((element) => {
+          element.value = "";
+        })
+      }
+      catch (e) {
+        document.getElementById('msg-fail').innerHTML = '<span class="text-danger">Login Failed<span>';
+        document.querySelector('input[name="pass"]').value = '';
+        console.log("wronggg");
+      }
+    });
   }
 
   function isLoggedIn() {
@@ -37,10 +57,7 @@
   }
 
   function handleLogin() {
-    document.getElementById('msg-success').innerHTML = `<span class="text-info">User ${localStorage.getItem('uid')}<span>`;
-    document.getElementById('logout-button').innerHTML =
-    `<button class="btn btn-outline-warning mr-2" id="add-todo" type="button" onclick="logout()">Logout</button>`;
-    document.getElementById('signup').innerHTML = '';
+    window.location.replace('../');
   }
 })();
 

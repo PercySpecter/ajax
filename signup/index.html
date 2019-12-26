@@ -5,11 +5,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="stylesheets/normalize.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="stylesheets/home_style.css">
+      <link rel="stylesheet" href="../stylesheets/home_style.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-      <title>Home</title>
+      <title>Sign Up</title>
    </head>
    <body class="bg-light" id="body">
      <header>
@@ -34,7 +34,7 @@
             <div id="msg-success" class="my-2 my-lg-0 mx-auto">
               <form name="login-form" id="login-form" class="form-inline">
                 <input type="text" name="uid" class="form-input form-control mr-sm-2" placeholder="User ID" aria-label="UserID">
-                <input type="password" name="pass" class="form-input form-control mr-sm-2" placeholder="Password" aria-label="Password">
+                <input type="password" name="pass" class="form-input form-control mr-sm-2" placeholder="Password" aria-label="Title">
                 <button class="btn btn-outline-info my-2 my-sm-0" id="add-todo" type="submit">Login</button>
                 <div class="ml-2" id="msg-fail">
 
@@ -50,18 +50,32 @@
      <div class="container-fluid border border-primary border-primary border-top-0 border-bottom-0">
        <div class="row content">
          <div class="col-lg-11 mx-auto py-1 page-header border border-primary border-bottom-0">
-           <h3 class="text-center">Typicode</h3>
+           <h3 class="text-center">Typicode<small class="ml-2">Sign-Up</small></h3>
          </div>
        </div>
        <div class="row content">
          <div class="col-lg-11 border border-primary border-top-0 total-container mx-auto mb-2 py-3">
-           <h5 class="text-center">Please follow the navigation links to access <a href="posts/">Posts</a> and <a href="todos/">Todos</a></h5>
-           <h5 id='signup' class="text-center">New User? <a href='signup'>Sign Up</a></h5>
+           <div class="container-fluid">
+             <div class="row content">
+               <div class="col-lg-6 mx-auto">
+                 <form name="signup-form" id="signup-form" class="form">
+                   <input type="text" name="uid" class="form-input form-control my-2" placeholder="Enter a User ID">
+                   <input type="password" name="pass" class="form-input form-control my-2" placeholder="Set a Strong Password">
+                   <div class="text-center">
+                     <button class="btn btn-outline-info my-2" id="add-todo" type="submit">Sign Up</button>
+                   </div>
+                 </form>
+                 <div id="status-msg" class="">
+
+                 </div>
+               </div>
+             </div>
+           </div>
          </div>
        </div>
      </div>
    </body>
-   <script src="scripts/login.js">
+   <script src="../scripts/signup.js">
 
    </script>
 </html>
