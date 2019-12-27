@@ -10,7 +10,7 @@
   {
     document.getElementById('add-todo-form').innerHTML = '';
     document.getElementById("todos").innerHTML = `<span class="mx-auto">
-                                                    Please <a href='../'>Login</a> to view your Todos 
+                                                    Please <a href='../'>Login</a> to view your Todos
                                                   </span>`;
     return;
   }
@@ -61,6 +61,10 @@
   })
 
   function enlistTodos() {
+    document.querySelectorAll('.input-check').forEach((element) => {
+      const id = element.getAttribute('data-todo');
+      element.removeEventListener('change', e => toggleTodo(e, id));
+    });
     let list = todos.reduce((agg, todo) => {
       return `
         <label id="label_${todo.id}" for="${todo.id}" class="list-group-item border border-success my-1 check-label" ${todo.completed ? "style='background-color: #abffbe !important'" : ""}>

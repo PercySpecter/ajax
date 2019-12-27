@@ -37,6 +37,7 @@
   }
 
   function handleLogin() {
+    document.getElementById('login-form').removeEventListener("submit" , () => {});
     document.getElementById('msg-success').innerHTML = `<span class="text-info">User ${localStorage.getItem('uid')}<span>`;
     document.getElementById('logout-button').innerHTML =
     `<button class="btn btn-outline-warning mr-2" id="add-todo" type="button" onclick="logout()">Logout</button>`;
